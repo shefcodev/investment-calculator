@@ -22,11 +22,7 @@ const InvData = ({ calculateHandler, onResetHandler }) => {
   };
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={submitHandler}
-      onReset={resetHandler}
-    >
+    <form className={styles.form} onSubmit={submitHandler} onReset={resetHandler}>
       <div className={styles['input-group']}>
         <p>
           <label htmlFor='current-savings'>Current Savings ($)</label>
