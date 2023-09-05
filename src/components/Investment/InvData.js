@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Buttons from '../UI/Buttons/Buttons';
 import styles from './InvData.module.css';
 
-const InvData = ({ calculateHandler }) => {
+const InvData = ({ calculateHandler, onResetHandler }) => {
   const [invValues, setInvValues] = useState({});
 
   const submitHandler = (event) => {
@@ -12,7 +12,8 @@ const InvData = ({ calculateHandler }) => {
 
   const resetHandler = () => {
     setInvValues({});
-  }
+    onResetHandler();
+  };
 
   const inputHandler = ({ target: { id, value } }) => {
     setInvValues((prevValue) => {
@@ -21,7 +22,11 @@ const InvData = ({ calculateHandler }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={submitHandler} onReset={resetHandler}>
+    <form
+      className={styles.form}
+      onSubmit={submitHandler}
+      onReset={resetHandler}
+    >
       <div className={styles['input-group']}>
         <p>
           <label htmlFor='current-savings'>Current Savings ($)</label>

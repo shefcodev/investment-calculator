@@ -39,13 +39,16 @@ const App = () => {
     }
 
     setInvData(yearlyData);
-    console.log(invData);
+  };
+
+  const onResetHandler = () => {
+    setInvData([]);
   };
 
   return (
     <div>
       <Header src={logo} alt='logo' />
-      <InvData calculateHandler={calculateHandler} />
+      <InvData calculateHandler={calculateHandler} onResetHandler={onResetHandler}/>
       <Results results={invData}/>
     </div>
   );
