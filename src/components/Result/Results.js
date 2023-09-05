@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Result from './Result';
 import styles from './Results.module.css';
 
 const Results = ({ results }) => {
-  console.log(results);
-  return (
+  const fallback = <p className={styles.fallback}>No Investment Found.</p>;
+
+  return results.length ? (
     <table className={styles.result}>
       <thead>
         <tr>
@@ -15,21 +16,14 @@ const Results = ({ results }) => {
           <th>Invested Capital</th>
         </tr>
       </thead>
-      {/* <tbody>
-        <tr>
-          <td>YEAR NUMBER</td>
-          <td>TOTAL SAVINGS END OF YEAR</td>
-          <td>INTEREST GAINED IN YEAR</td>
-          <td>TOTAL INTEREST GAINED</td>
-          <td>TOTAL INVESTED CAPITAL</td>
-        </tr>
-      </tbody> */}
       <tbody>
         {results.map((result) => (
           <Result result={result} key={result.key} />
         ))}
       </tbody>
     </table>
+  ) : (
+    fallback
   );
 };
 
